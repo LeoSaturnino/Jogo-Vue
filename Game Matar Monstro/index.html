@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600" rel="stylesheet">
     <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/sweetalert2@7.12.15/dist/sweetalert2.all.js"></script>
 </head>
 
 <body>
@@ -52,7 +53,7 @@
                                 <label>{{p.nome}}</label>
                                 <img :src="p.img" width="100" height="140" @click="escolherPersonagem(p.id)">
                                 <div>
-                                    <div class="icones"><img src="./assets/icon/escudo.svg" class="icon forca" />{{p.forca}} </div>
+                                    <div class="icones"><img src="./assets/icon/forca.svg" class="icon forca" />{{p.forca}} </div>
                                     <div class="icones"><img src="./assets/icon/vida.svg" class="icon vida" />{{p.vida}} </div>
                                     <div class="icones"><img src="./assets/icon/mana.svg" class="icon mana" />{{p.mana}}</div>
                                 </div>
@@ -67,7 +68,7 @@
                                 <label>{{m.nome}}</label>
                                 <img :src="m.img" width="100" height="140" @click="escolherInimigo(m.id)">
                                 <div>
-                                    <div class="icones"><img src="./assets/icon/escudo.svg" class="icon forca" />{{m.forca}} </div>
+                                    <div class="icones"><img src="./assets/icon/forca.svg" class="icon forca" />{{m.forca}} </div>
                                     <div class="icones"> <img src="./assets/icon/vida.svg" class="icon vida" />{{m.vida}} </div>
                                     <div class="icones"><img src="./assets/icon/raiva.svg" class="icon raiva" />{{m.raiva}} </div>
                                 </div>

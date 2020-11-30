@@ -60,6 +60,11 @@ new Vue({
   computed: {
     resultado() {
       if (this.jogador && this.monstro) {
+        if (this.monstro.vida <= 0) {
+          swal('Parabéns!', 'Você Ganhou!', 'success');
+        } else if (this.jogador.vida <= 0) {
+          swal('Que Pena!', 'Você Perdeu!', 'error');
+        }
         return this.jogador.vida <= 0 || this.monstro.vida <= 0;
       }
       return false;
@@ -67,8 +72,8 @@ new Vue({
   },
   methods: {
     iniciarGame() {
-      if(this.monstroEscolhido == null || this.jogadorEscolhido == null){
-        alert("Escolha os personagens");
+      if (this.monstroEscolhido == null || this.jogadorEscolhido == null) {
+        swal('Escolha os personagens', '', 'error');
         return;
       }
       this.jogador = { ...this.personagens[this.jogadorEscolhido] };
@@ -145,13 +150,13 @@ new Vue({
       ;
     },
     'monstro.vida': function (novo, antigo) {
-      if ((antigo - novo) > 10) {
+      if ((antigo - novo) > 10 && this.monstro.vida > 0) {
         this.monstro.raiva++;
         this.registerLog(`Mostro ganhou 1 de Raiva.`, "monster-raiva")
       }
     },
     'jogador.vida': function (novo, antigo) {
-      if ((antigo - novo) > this.monstro.forca) {
+      if ((antigo - novo) > this.monstro.forca && this.jogador.vida > 0) {
         this.jogador.mana++;
         this.registerLog(`Jogador ganhou 1 de Mana.`, "player-mana")
       }

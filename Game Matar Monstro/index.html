@@ -44,16 +44,35 @@
         <div id="acoes" class="panel buttons">
             <div v-if="!jogando">
                 <div class="personagens">
-                    <div class="panel personagem">
-                        <h2>Personagens</h2>
-                        <img v-for="p in personagens" :src="p.img" width="100" height="140"
-                            @click="escolherPersonagem(p.id)"
-                            :class="{escolhido: p.id == jogadorEscolhido}">
+                    <div class="panel herois">
+                        <h2>Hérois</h2>
+                        <div class="personagem">
+                            <div class="div-person" v-for="p in personagens"
+                                :class="{heroiescolhido: p.id == jogadorEscolhido}">
+                                <label>{{p.nome}}</label>
+                                <img :src="p.img" width="100" height="140" @click="escolherPersonagem(p.id)">
+                                <div>
+                                    <div class="icones"><img src="./assets/icon/escudo.svg" class="icon forca" />{{p.forca}} </div>
+                                    <div class="icones"><img src="./assets/icon/vida.svg" class="icon vida" />{{p.vida}} </div>
+                                    <div class="icones"><img src="./assets/icon/mana.svg" class="icon mana" />{{p.mana}}</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="panel monstro">
-                        <h2>Inimigos</h2>
-                        <img v-for="m in inimigos" :src="m.img" width="100" height="140" @click="escolherInimigo(m.id)"
-                            :class="{escolhido: m.id == monstroEscolhido}">
+                    <div class="panel monstros">
+                        <h2>Monstros</h2>
+                        <div class="personagem">
+                            <div class="div-person" v-for="m in inimigos"
+                                :class="{monstroescolhido: m.id == monstroEscolhido}">
+                                <label>{{m.nome}}</label>
+                                <img :src="m.img" width="100" height="140" @click="escolherInimigo(m.id)">
+                                <div>
+                                    <div class="icones"><img src="./assets/icon/escudo.svg" class="icon forca" />{{m.forca}} </div>
+                                    <div class="icones"> <img src="./assets/icon/vida.svg" class="icon vida" />{{m.vida}} </div>
+                                    <div class="icones"><img src="./assets/icon/raiva.svg" class="icon raiva" />{{m.raiva}} </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="buttoncenter">

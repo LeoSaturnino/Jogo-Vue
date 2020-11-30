@@ -67,6 +67,10 @@ new Vue({
   },
   methods: {
     iniciarGame() {
+      if(this.monstroEscolhido == null || this.jogadorEscolhido == null){
+        alert("Escolha os personagens");
+        return;
+      }
       this.jogador = { ...this.personagens[this.jogadorEscolhido] };
       this.monstro = { ...this.inimigos[this.monstroEscolhido] };
       if (!this.jogador) {

@@ -136,6 +136,7 @@ html {
 }
 
 .buttoncenter{
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -206,45 +207,62 @@ html {
 .personagens h2{
     color:blue;
     margin: 0;
-    font-weight: 200;
+    font-weight: 300;
     font-size: 1.2rem;
     text-align: center;
 }
 
 .personagem{
-    flex: 1;
-    display: inline;
-    flex-direction: column;
+    /* flex: 1; */
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
 .personagem img{
     margin:10px;
-    border: solid transparent 1px;
 }
 
-.personagem img:hover{
+.div-person:hover{
     border: solid blue 1px;
 }
 
-.monstro{
-    flex: 1;
-    display: inline;
+.heroiescolhido{
+    border: solid green 1px !important;
+}
+
+.monstroescolhido{
+    border: solid red 1px !important;
+}
+
+.div-person{
+    margin: 30px;
+    width: 30%;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.monstro img{
-    margin:10px;
     border: solid transparent 1px;
 }
-
-.monstro img:hover{
-    border: solid blue 1px;
+.monstros{
+    box-shadow: 0 2px 10px rgba(145, 27, 27, 0.65) !important;
 }
 
-.escolhido{
-    border: solid green 1px !important;
+.herois{
+    box-shadow: 0 2px 10px rgba(55, 143, 37, 0.65) !important;
+}
+
+/* Icones */
+.icones{
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+}
+
+.icon{
+    margin: 1px !important;
+    width: 12px;
+    height: 12px;
 }

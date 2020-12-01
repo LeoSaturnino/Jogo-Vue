@@ -81,17 +81,31 @@
                 </div>
             </div>
             <div v-else>
-                <button @click="attack(false)" class="btn attack">Ataque</button>
-                <button @click="attack(true)" class="btn especial-attack" :class="{disabled: jogador.mana == 0}"
-                    :disabled="(jogador.mana == 0)">Ataque Especial</button>
-                <button @click="curaEdano()" class="btn cura" :class="{disabled: jogador.mana == 0}"
-                    :disabled="(jogador.mana == 0)">Curar</button>
-                <button @click="suicidar()" class="btn give-up">Suicidar</button>
+                <div class="batalha">
+                    <div class="animation heroiAnimation">
+                        <img :src="jogador.animation" >
+                    </div>
+                    <div class="animation monstroAnimation">
+                        <img :src="monstro.animation" >
+                    </div>
+                </div>
+                <div class="botoes">
+                    <button @click="attack(false)" class="btn attack">Ataque</button>
+                    <button @click="attack(true)" class="btn especial-attack" :class="{disabled: jogador.mana == 0}"
+                        :disabled="(jogador.mana == 0)">Ataque Especial</button>
+                    <button @click="curaEdano()" class="btn cura" :class="{disabled: jogador.mana == 0}"
+                        :disabled="(jogador.mana == 0)">Curar</button>
+                    <button @click="suicidar()" class="btn give-up">Suicidar</button>
+                </div>
             </div>
         </div>
         <div v-if="resultado" class="panel result">
-            <div v-if="monstro.vida == 0" class="win">Você ganhou!!! :)</div>
-            <div v-else class="lose">Você perdeu! :(</div>
+            <div v-if="monstro.vida == 0" class="win">
+                <img :src='"assets/sprite/"+jogador.nome+"/inicial.gif"' ><br/>
+                Você ganhou!!! :)</div>
+            <div v-else class="lose">
+                <img :src='"assets/sprite/"+jogador.nome+"/dead.gif"' ><br/>
+                Você perdeu! :(</div>
         </div>
         <div id="logs" class="panel logs" v-if="logs.length">
             <ul>

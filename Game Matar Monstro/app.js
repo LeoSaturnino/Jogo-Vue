@@ -6,7 +6,8 @@ new Vue({
     personagens: [
       mago = {
         id: 0,
-        img: 'assets/mago.jpg',
+        img: 'assets/person/mago.jpg',
+        animation: 'assets/sprite/Mago/inicial.gif',
         nome: 'Mago',
         vida: 100,
         mana: 5,
@@ -15,7 +16,8 @@ new Vue({
       }, guerreiro = {
         id: 1,
         nome: 'Guerreiro',
-        img: 'assets/guerreiro.jpg',
+        img: 'assets/person/guerreiro.jpg',
+        animation: 'assets/sprite/Guerreiro/inicial.gif',
         vida: 120,
         mana: 4,
         forca: 8,
@@ -23,7 +25,8 @@ new Vue({
       }, arqueiro = {
         id: 2,
         nome: 'Arqueiro',
-        img: 'assets/arqueiro.jpg',
+        img: 'assets/person/arqueiro.jpg',
+        animation: 'assets/sprite/Arqueiro/inicial.gif',
         vida: 100,
         mana: 5,
         forca: 7,
@@ -33,21 +36,24 @@ new Vue({
       fera = {
         id: 0,
         nome: 'Fera',
-        img: 'assets/fera.jpg',
+        img: 'assets/person/fera.jpg',
+        animation: 'assets/sprite/Fera/inicial.gif',
         vida: 100,
         raiva: 2,
         forca: 10,
       }, demonio = {
         id: 1,
         nome: 'Demônio',
-        img: 'assets/demonio.jpg',
+        img: 'assets/person/demonio.jpg',
+        animation: 'assets/sprite/Demônio/inicial.gif',
         vida: 100,
         raiva: 0,
         forca: 12,
       }, troll = {
         id: 2,
         nome: 'Troll',
-        img: 'assets/troll.jpg',
+        img: 'assets/person/troll.jpg',
+        animation: 'assets/sprite/Troll/inicial.gif',
         vida: 120,
         raiva: 0,
         forca: 10,
@@ -94,15 +100,29 @@ new Vue({
       this.monstroEscolhido = num;
     },
     attack(especial) {
-      let css = "player";
-      if (especial == true) {
-        this.jogador.mana--;
-        css = "player-especial";
+      if (especial) {
+        this.jogador.animation = "assets/sprite/" + this.jogador.nome + "/ataque_especial.gif";
+      } else {
+        this.jogador.animation = "assets/sprite/" + this.jogador.nome + "/ataque.gif";
       }
-      this.dano(this.monstro, this.jogador.forca - 2, this.jogador.forca + 2, especial, "Jogador", "Monstro", css);
-      if (this.monstro.vida > 0) {
-        this.dano(this.jogador, this.monstro.forca - 2, this.monstro.forca + 2, false, "Monstro", "Jogador", "monster");
-      }
+      this.monstro.animation = "assets/sprite/" + this.monstro.nome + "/hit.gif";
+      setTimeout(() => {
+        let css = "player";
+        if (especial == true) {
+          this.jogador.mana--;
+          css = "player-especial";
+        }
+        this.dano(this.monstro, this.jogador.forca - 2, this.jogador.forca + 2, especial, "Jogador", "Monstro", css);
+        if (this.monstro.vida > 0) {
+          this.monstro.animation = "assets/sprite/" + this.monstro.nome + "/ataque.gif";
+          this.jogador.animation = "assets/sprite/" + this.jogador.nome + "/hit.gif";
+          setTimeout(() => {
+            this.jogador.animation = "assets/sprite/" + this.jogador.nome + "/inicial.gif";
+            this.monstro.animation = "assets/sprite/" + this.monstro.nome + "/inicial.gif";
+          }, 2000);
+          this.dano(this.jogador, this.monstro.forca - 2, this.monstro.forca + 2, false, "Monstro", "Jogador", "monster");
+        }
+      }, 2000);
     },
     dano(personagem, min, max, especial, source, target, cls) {
       const plus = especial ? this.jogador.especial : 0;
@@ -111,12 +131,21 @@ new Vue({
       this.registerLog(`${source} atingiu ${target} com ${dano}.`, cls);
     },
     curaEdano() {
-      let plus = 0;
-      if (this.jogador.id == 0) {
-        plus = 5;
-      }
-      this.cura(10, 15, plus);
-      this.dano(this.jogador, this.monstro.forca - 2, this.monstro.forca + 2, false, "Monstro", "Jogador", "monster");
+      this.jogador.animation = "assets/sprite/" + this.jogador.nome + "/vida.gif";
+      setTimeout(() => {
+        let plus = 0;
+        if (this.jogador.id == 0) {
+          plus = 5;
+        }
+        this.cura(10, 15, plus);
+        this.monstro.animation = "assets/sprite/" + this.monstro.nome + "/ataque.gif";
+        this.jogador.animation = "assets/sprite/" + this.jogador.nome + "/hit.gif";
+        setTimeout(() => {
+          this.jogador.animation = "assets/sprite/" + this.jogador.nome + "/inicial.gif";
+          this.monstro.animation = "assets/sprite/" + this.monstro.nome + "/inicial.gif";
+        }, 2000);
+        this.dano(this.jogador, this.monstro.forca - 2, this.monstro.forca + 2, false, "Monstro", "Jogador", "monster");
+      }, 2000);
     },
     cura(min, max, plus) {
       this.jogador.mana--;
@@ -125,6 +154,7 @@ new Vue({
       this.registerLog(`Jogador ganhou ${cura} de vida.`, "player-cura");
     },
     suicidar() {
+      this.jogador.animation = "assets/sprite/" + this.jogador.nome + "/dead.gif";
       this.jogador.vida = 0;
       setTimeout(
         this.jogando = false
@@ -163,6 +193,12 @@ new Vue({
     },
     'monstro.raiva': function (value) {
       if (value == 3) {
+        this.monstro.animation = "assets/sprite/" + this.monstro.nome + "/ataque_especial.gif";
+        this.jogador.animation = "assets/sprite/" + this.jogador.nome + "/hit.gif";
+        setTimeout(() => {
+          this.jogador.animation = "assets/sprite/" + this.jogador.nome + "/inicial.gif";
+          this.monstro.animation = "assets/sprite/" + this.monstro.nome + "/inicial.gif";
+        }, 2000);
         this.jogador.vida -= this.monstro.forca;
         this.monstro.raiva = 0;
         this.registerLog(`Mostro causou ` + this.monstro.forca + ` de dano no jogador.`, "monster-especial")

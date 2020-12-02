@@ -272,10 +272,22 @@ html {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-bottom: 30px;
+    background-color: rgb(206, 206, 206);
+    background-image: url("assets/borda-batle.png") ;
+    background-size: auto;
+    background-position: center;
 }
 
 .animation{
     background-color: transparent !important;
     width : 40%;
-    margin: 50px;
+}
+
+.heroiAnimation{
+    margin-right: -60px;
+}
+
+.monstroAnimation{
+    margin-left: -60px;
 }

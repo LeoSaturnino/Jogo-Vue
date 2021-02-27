@@ -101,10 +101,10 @@
         </div>
         <div v-if="resultado" class="panel result">
             <div v-if="monstro.vida == 0" class="win">
-                <img :src='"assets/sprite/"+jogador.nome+"/inicial.gif"' ><br/>
+                <img v-if="jogador.animationOK" :src='"assets/sprite/"+jogador.nome+"/inicial.gif"' ><br/>
                 Você ganhou!!! &#128515</div>
             <div v-else class="lose">
-                <img :src='"assets/sprite/"+jogador.nome+"/dead.gif"' ><br/>
+                <img v-if="jogador.animationOK" :src='"assets/sprite/"+jogador.nome+"/dead.gif"' ><br/>
                 Você perdeu! &#128542</div>
         </div>
         <div id="logs" class="panel logs" v-if="logs.length">

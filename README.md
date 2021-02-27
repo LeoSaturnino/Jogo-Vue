@@ -1,12 +1,16 @@
-Projeto em VueJS
 
-Objetivo de iniciar o aprendizado na linguagem.
+# Game Matar Monstro
 
-Jogo de matar Monstros adapatado com novas mecânicas, para testes de conhecimento e apredizado.
+<h3>Descrição</h3>
+Jogo simples em turnos com objetivo de Matar o Monstro Adversário
 
-O jogo consite em turnos, no qual o jogar tem como objetivo matar o mostro adaversario, 
-o jogo conta com algumas mecânicas de habilidades, sendo que cada heroi escolhido possui 
-uma mecânica diferente e nivéis de forças também diferentes, os monstros também possuem 
-mecânicas e habilidades diferentes.
+<h3>Tecnologias</h3>
+- HTML5
+- CSS3
+- VueJS
+- JavaScript
 
+<h3>Objetivo</h3>
+Aprender a linguagem de Programação VueJS e como as tecnologias reativas funcionam.
 
+<h3>Funcionamento</h3>

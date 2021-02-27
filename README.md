@@ -14,6 +14,7 @@ Aprender a linguagem de Programação VueJS e como as tecnologias reativas funci
 
 <h3>Funcionamento</h3>
 O Jogador começa escolhendo o seu Herói e o Monstro adversário que irá Batalhar, cada Personagem tem pontos de atributos diferentes (vida, força, mana ou raiva), sendo executado uma ação por turno com o objetivo de zerar a vida do Adversário.
+
 ![jmm - incio](https://user-images.githubusercontent.com/22065816/109401543-24ee8500-792e-11eb-8265-f457b0c3a728.png)
 
 Após inciar o Jogo o jogador tem 4 opções de Movimento:
@@ -44,4 +45,5 @@ Está parte não está finaliza pois o objetivo era aprender sobre o VueJS e nã
 <h3>Execução</h3>
 Bastar Realizar o download do Projeto e abrir o arquivo index.html.
 O Projeto utilizao VueJS online entâo não é necessário realizar a instalação das dependências.
+
 ![jmm - animation](https://user-images.githubusercontent.com/22065816/109401548-2a4bcf80-792e-11eb-8f37-f6f1a31b94e7.png)
